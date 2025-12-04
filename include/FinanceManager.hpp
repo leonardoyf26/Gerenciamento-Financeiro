@@ -12,7 +12,7 @@ private:
 public:
     void addTransaction(const Transaction& t);
     void listAll() const;
-    void listByMonth(std::string d1) const;
+    void listByMonth(const std::string& d1) const;
 };
 
 #endif

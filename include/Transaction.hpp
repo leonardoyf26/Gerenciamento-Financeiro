@@ -26,8 +26,8 @@ public:
 
 public:
     Type type;
-   
     int type_num;
+    
     double value;
    
     std::string date;
