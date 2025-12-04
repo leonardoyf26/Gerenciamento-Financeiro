@@ -6,8 +6,8 @@ class Transaction
 {
 public:
     enum class Type {
-        income,
-        expense
+        renda,
+        despesa
     };
 
 public:
@@ -26,15 +26,23 @@ public:
 
 public:
     Type type;
+   
+    int type_num;
     double value;
+   
     std::string date;
+   
+    int catg_num;
     Category category;
+   
     std::string description;
 
 public:
-    Transaction(Type t, double v, std::string d1, Category c, std::string d2);
-    std::string getTypeTxt(Type t);
-    std::string getCategoryTxt(Category c);
+    Transaction(int t, double v, std::string d1, int c, std::string d2);
+    void setEnumType();
+    void setEnumCategory();
+    std::string getTypeTxt();
+    std::string getCategoryTxt();
 };
 
 #endif
