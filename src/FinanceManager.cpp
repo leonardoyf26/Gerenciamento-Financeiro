@@ -12,7 +12,7 @@ void FinanceManager::listAll() const{
         std::cout << "Data: " << t.date  << '\n';
         std::cout << "Categoria: " << t.getCategoryTxt()  << '\n';
         std::cout << "Descricao: " << t.description  << '\n';
-        std::cout << "------------------------";
+        std::cout << "------------------------\n";
     }
 }
 
