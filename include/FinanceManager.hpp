@@ -10,6 +10,7 @@ private:
     std::vector<Transaction> transactions{};
 
 public:
+    std::vector<Transaction> getTransaction();
     void addTransaction(const Transaction& t);
     void listAll() const;
     void listByMonth(const std::string& d1) const;

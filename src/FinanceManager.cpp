@@ -4,6 +4,10 @@
 void FinanceManager::addTransaction(const Transaction& t){
     this->transactions.emplace_back(t);
 }
+std::vector<Transaction> FinanceManager::getTransaction()
+{
+    return this->transactions;
+}
 
 void FinanceManager::listAll() const{
     for(auto t : this->transactions){
