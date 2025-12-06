@@ -6,11 +6,10 @@
 #include <vector>
 
 //3tasks no codigo
-//resolver problema do comando invalido
+//Passar uma funcao como parametro na funcao que lista
 
-
-void createTransaction(FinanceManager& fm);
 void interface(FinanceManager& fm);
+void createTransaction(FinanceManager& fm);
 void listByMonth(const FinanceManager& fm);
 void listTransaction(const FinanceManager& fm);
 void loadFromFile(FinanceManager& fm);
@@ -45,7 +44,8 @@ void saveToFile(FinanceManager& fm)
     arq.close();
 }
 
-void loadFromFile(FinanceManager& fm){
+void loadFromFile(FinanceManager& fm)
+{
     std::ifstream arq("data/transaction.csv");
     std::string line;
     if (!arq.is_open()) {
@@ -65,12 +65,12 @@ void loadFromFile(FinanceManager& fm){
         getline(ss, d2, ';');
         Transaction tr{typeStr2int(t),std::stod(v),d1,categoryStr2int(c),d2};
         fm.addTransaction(tr);
-        std::cout << t << ' ' << v << ' ' << d1 << ' ' << c << ' ' << d2 << '\n';
-        std::cout << typeStr2int(t) << ' ' << std::stod(v) << ' ' << d1 << ' ' << categoryStr2int(c) << ' ' << d2 << ' ';
     }
+    arq.close();
 }
 
-int categoryStr2int(const std::string& c){
+int categoryStr2int(const std::string& c)
+{
     if(c == "Alimentacao"){return 1;}
     else if(c == "Transporte"){return 2;}
     else if(c == "Moradia"){return 3;}
@@ -86,7 +86,8 @@ int categoryStr2int(const std::string& c){
 }
 
 
-int typeStr2int(const std::string& t){
+int typeStr2int(const std::string& t)
+{
     if(t == "Renda"){return 1;}
     else if(t == "Despesa"){return 2;}
     else{return -1;}
@@ -95,7 +96,8 @@ int typeStr2int(const std::string& t){
 }
 
 
-void listTransaction(const FinanceManager& fm){
+void listTransaction(const FinanceManager& fm)
+{
     system("cls");
     fm.listAll();
     std::cout << "\nPressione enter tecla para continuar...";
@@ -105,11 +107,13 @@ void listTransaction(const FinanceManager& fm){
 void listByMonth(const FinanceManager& fm)
 {
     system("cls");
-    std::string month;
-    std::cout << "Digite um valor de mes(mm): ";
+    std::string month, year;
+    std::cout << "Digite o mes(mm): ";
     std::cin >> month;
+    std::cout << "Digite o ano(aaaa): ";
+    std::cin >> year;
 
-    fm.listByMonth(month);
+    fm.listByMonth(month, year);
 
     std::cout << "\n\n\nPressione enter tecla para continuar...";
     std::cin.get(); 
@@ -154,8 +158,6 @@ void createTransaction(FinanceManager& fm)
 void interface(FinanceManager& fm)
 {
     size_t cmd{10};
-    //lembrar de carregar os dados do arquivo .csv
-
     while(cmd){
         system("cls");
         std::cout << "Digite a operacao\n";

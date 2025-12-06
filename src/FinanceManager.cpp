@@ -20,10 +20,15 @@ void FinanceManager::listAll() const{
     }
 }
 
-void FinanceManager::listByMonth(const std::string& d1 ) const{
+/*void FinanceManager::listAllResume() const{
+    for(auto t : this->transactions){
+    }
+}*/
+
+void FinanceManager::listByMonth(const std::string& month, const std::string& year ) const{
     double income{}, expense{};
     for(auto t : this->transactions){
-        if(t.date.substr(3,2) == d1)
+        if(t.date.substr(3,2) == month && t.date.substr(6,4) == year)
         {
             if(t.type == Transaction::Type::renda){income += t.value;}
             else if(t.type == Transaction::Type::despesa){expense += t.value;}
@@ -31,9 +36,9 @@ void FinanceManager::listByMonth(const std::string& d1 ) const{
     }
 
     std::cout << "\n\n------------------------";
-    std::cout << "\nRelatorio do mes " << d1;
+    std::cout << "\nRelatorio do " << month << '/' << year;
     std::cout << "\nRenda: " << income << "R$";
     std::cout << "\nDespesa: " << expense << "R$";
     std::cout << "\nSaldo: " << income - expense << "R$";
-    std::cout << "------------------------\n\n";
+    std::cout << "\n------------------------\n\n";
 }
